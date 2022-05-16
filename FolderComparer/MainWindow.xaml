@@ -1,0 +1,41 @@
+﻿<Window x:Class="FolderComparer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FolderComparer" 
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="FolderComparer" Height="500" Width="700">
+    <StackPanel Margin="5,5,5,5">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+            <Label>Instructions</Label>
+            <TextBlock FontSize="10" TextWrapping="Wrap">
+                First select the folder you want the contents of in the Folder To Look At field. Then select a location to save the contents of that folder to in the Comparison File Location. This should be a location that doesn't exist yet.
+                Click the Generate Comparison File button to create this file.
+                <LineBreak/>
+                Now that the file is created, new the folder you want to verify the contents of in the Folder To Look At field. Enter the comparison file path into the Comparison File Location field if it's not already there. 
+                Select a location for the comparison result file in the Output File Location which should be a location that doesn't exist yet. Click the Generate Output button to compare the folder against the file. If problems are found, they will be written to the output location.
+            </TextBlock>
+            <Label>Folder To Look At</Label>
+            <TextBox Name="FolderTextBox"></TextBox>
+            <Button Width="100" Click="ComparisonFolderDialogClick" Margin="0,5,0,5">Select Folder</Button>
+            <Label>Comparison File Location</Label>
+            <Label FontSize="10">Must be set to an existing file to use the output feature. Set to a file path that doesn't exist to create the comparison file.</Label>
+            <TextBox Name="ComparisonFileTextBox"></TextBox>
+            <Button Width="100" Click="SelectComparisonFileClick" Margin="0,5,0,5">Select File</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="150" Click="GenerateComparisonFileClick" Height="20">Generate Comparison File</Button>
+                <fa:ImageAwesome x:Name="ComparisonFileGenerationSpinner" Icon="Refresh" Spin="True" Height="48" Width="48" Visibility="Collapsed" />
+            </StackPanel>
+            <Label>Output File Location</Label>
+            <Label FontSize="10">Not needed for generating the initial comparison file.</Label>
+            <TextBox Name="OutputFileTextBox"></TextBox>
+            <Button Width="100" Click="SelectOutputFileClick" Margin="0,5,0,5">Select Location</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="100" Height="20" Click="GenerateOutputClicked">Generate Output</Button>
+                <fa:ImageAwesome x:Name="OutputFileGenerationSpinner" Icon="Refresh" Spin="True" Height="48" Width="48" Visibility="Collapsed" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
